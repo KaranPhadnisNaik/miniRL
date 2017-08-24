@@ -3,6 +3,8 @@ from flask_restful import Resource, Api, reqparse
 #from flask_jwt import JWT, jwt_required
 import sqlite3
 
+
+
 #from security import authenticate,identity
 #from user import UserRegister
 
@@ -32,27 +34,17 @@ class CreateLinks(Resource):
         item = {'hash': hashedValue , 'full_url': data['full_url']}
         return item, 201
 
-    def delete(self, name):
-       global items
-       items = list(filter(lambda x: x['name'] != name, items))
-       return {'message': 'Item deleted'}
-
-    def put(self,name):
-        data = Item.parser.parse_args()
-        item = next(filter(lambda x: x['name'] == name, items), None)
-        if item is None:
-            item = {'name': name, 'price': data['price']}
-            items.append(item)
-        else:
-            item.update(data)
-        return item
-
-class ItemList(Resource):
-    def get(self):
+class HashesAPI(Resource):
+    def get(self, slug):
+        # check if slug EXISTS
+        # if not, give error message
+        # if it does , send the full url and update service
+        slug
         return {'items': items}
 
 
 api.add_resource(CreateLinks, '/create') # localhost:9000/create
+api.add_resource()
 #api.add_resource(ItemList, '/') # localhost:9000/Item/Rolf
 #api.add_resource(UserRegister, '/register') # localhost:9000/register
 

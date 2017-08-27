@@ -58,3 +58,11 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# OSX garbage
+.DS_Store
+
+# JS + Webpack + Node + NextJS
+frontend/node_modules
+frontend/.next
+package-lock.json

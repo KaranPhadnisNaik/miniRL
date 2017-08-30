@@ -19,7 +19,7 @@
     // Additions
     "comma-dangle": "off",
     "react/jsx-filename-extension": "off",
-    "no-use-before-define": [ 2, { "functions": false } ],
+    "no-use-before-define": "off",
     "import/no-extraneous-dependencies": "off",
     "react/react-in-jsx-scope": "off",
     "react/prefer-stateless-function": "off"

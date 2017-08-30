@@ -1,11 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "import"
-  ],
+  "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     // VSCode Defaults
     "no-const-assign": "warn",
@@ -17,6 +13,7 @@
     "valid-typeof": "warn",
 
     // Additions
+    "no-debugger": "off",
     "comma-dangle": "off",
     "react/jsx-filename-extension": "off",
     "no-use-before-define": "off",

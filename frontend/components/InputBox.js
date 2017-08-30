@@ -1,15 +1,57 @@
 import { Component } from 'react';
 import { Button } from 'reactstrap';
 
+import SearchBox from './SearchBox';
+import ResultCard from './ResultCard';
+
 class InputBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false,
+      miniRl: '',
+      url: '',
+    };
+  }
+
+  submitUrl = (url) => {
+    this.setState({
+      loading: true,
+      miniRl: '',
+      url: '',
+    });
+
+    // Handle API request here
+    const miniRl = 'http://bit.ly/1bdDlXc';
+
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+        title: 'Google',
+        miniRl,
+        url,
+      });
+    }, 1500);
+  };
+
+  renderResult = () => {
+    if (this.state.miniRl) {
+      return (
+        <ResultCard url={this.state.url} miniRl={this.state.miniRl} title={this.state.title} />
+      );
+    }
+  };
+
   render() {
     return (
       <div className="inputBox">
         <div className="logo">miniRL</div>
 
-        <div className="d-flex urlField">
-          <input type="text" className="form-control" />
-          <Button color="primary">Minify</Button>
+        <SearchBox onSubmit={this.submitUrl} loading={this.state.loading} />
+
+        <div className="resultsContainer">
+          {this.renderResult()}
         </div>
 
         {styles()}
@@ -30,30 +72,9 @@ const styles = () =>
         font-size: 60px;
         color: #dfebff;
       }
-      .urlField {
-        min-width: 350px;
-        max-width: 800px;
-        display: flex;
-      }
 
-      .urlField > input {
-        opacity: 0.8;
-        width: 100%;
-        flex: 1;
-        font-size: 16px;
-        border: 0;
-        border-radius: 0;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-      }
-
-      .urlField > button {
-        font-size: 16px;
-        border: 0;
-        border-radius: 0;
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-        cursor: pointer;
+      .resultsContainer {
+        margin-top: 20px;
       }
     `}
   </style>);

@@ -25,6 +25,7 @@ export default () =>
         body > div:first-of-type,
         #__next,
         #__next > div:first-of-type {
+          width: 100%;
           height: 100%;
         }
 

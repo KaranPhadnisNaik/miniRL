@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Button } from 'reactstrap';
+import { TweenMax } from 'gsap';
 
 class ResultCard extends Component {
   componentWillEnter(callback) {

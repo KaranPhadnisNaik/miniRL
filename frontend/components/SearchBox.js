@@ -17,6 +17,12 @@ class SearchBox extends Component {
     this.props.onSubmit(this.state.url);
   };
 
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.submitUrl();
+    }
+  };
+
   renderButton = () => {
     if (this.props.loading) {
       return (
@@ -41,8 +47,10 @@ class SearchBox extends Component {
         <input
           type="text"
           className="form-control"
+          placeholder="Enter a link..."
           value={this.state.url}
           onChange={this.updateUrl}
+          onKeyPress={this.handleKeyPress}
         />
 
         {this.renderButton()}
@@ -82,6 +90,10 @@ const styles = () =>
         border-bottom-right-radius: 2px;
         cursor: pointer;
         width: 100px;
+      }
+
+      .urlField > button:focus {
+        outline:0;
       }
 
       // Loader styles =====

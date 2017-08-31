@@ -2,7 +2,16 @@ import { Component } from 'react';
 
 const Footer = () =>
   (<footer style={styles.footerStyle}>
-    <div>Made with &#10084; in San Francisco by @danishmughal and @karanphadnisnaik.</div>
+    <div>
+      Made with &#10084; in San Francisco by{' '}
+      <a style={styles.linkStyle} href="https://github.com/danishmughal">
+        @danishmughal
+      </a>{' '}
+      and{' '}
+      <a style={styles.linkStyle} href="https://github.com/KaranPhadnisNaik/miniRL">
+        @karanphadnisnaik
+      </a>.
+    </div>
   </footer>);
 
 const styles = {
@@ -12,6 +21,9 @@ const styles = {
     color: '#dfebff',
     paddingBottom: '20px',
     textAlign: 'center',
+  },
+  linkStyle: {
+    color: 'white',
   },
 };
 

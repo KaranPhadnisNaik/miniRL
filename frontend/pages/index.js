@@ -44,6 +44,7 @@ export default () =>
 
         .inputContainer {
           height: 80%;
+          padding-top: 10%;
         }
       `}</style>
     </Head>
@@ -51,7 +52,7 @@ export default () =>
     <Navbar />
 
     <div style={styles.appContainerStyle}>
-      <div className="container inputContainer d-flex justify-content-center align-items-center">
+      <div className="container inputContainer d-flex justify-content-center">
         <InputBox />
       </div>
 

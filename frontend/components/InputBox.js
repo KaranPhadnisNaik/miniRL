@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Button } from 'reactstrap';
+import { TransitionGroup } from 'react-transition-group';
 
 import SearchBox from './SearchBox';
 import ResultCard from './ResultCard';
@@ -46,12 +47,15 @@ class InputBox extends Component {
   render() {
     return (
       <div className="inputBox">
-        <div className="logo">miniRL</div>
-
-        <SearchBox onSubmit={this.submitUrl} loading={this.state.loading} />
+        <div className="inputTop">
+          <div className="logo">miniRL</div>
+          <SearchBox onSubmit={this.submitUrl} loading={this.state.loading} />
+        </div>
 
         <div className="resultsContainer">
-          {this.renderResult()}
+          <TransitionGroup>
+            {this.renderResult()}
+          </TransitionGroup>
         </div>
 
         {styles()}
@@ -64,9 +68,11 @@ const styles = () =>
   (<style global jsx>
     {`
       .inputBox {
-        align-self: 'center';
         text-align: 'center';
         width: 600px;
+      }
+      .inputTop {
+        transition: all 3s;
       }
       .logo {
         font-size: 60px;

@@ -1,10 +1,21 @@
 import { Component } from 'react';
 import { Button } from 'reactstrap';
+import { TweenMax } from 'gsap';
 
 class ResultCard extends Component {
+  componentWillEnter(callback) {
+    const el = this.container;
+    TweenMax.fromTo(el, 0.5, { y: -50, opacity: 0 }, { y: 0, opacity: 1, onComplete: callback });
+  }
+
+  componentWillLeave(callback) {
+    const el = this.container;
+    TweenMax.fromTo(el, 0.5, { y: 0, opacity: 1 }, { y: 50, opacity: 0, onComplete: callback });
+  }
+
   render() {
     return (
-      <div className="card resultCard">
+      <div className="card resultCard" ref={c => (this.container = c)}>
         <div className="card-block">
           <h4 className="card-title">
             {this.props.title}

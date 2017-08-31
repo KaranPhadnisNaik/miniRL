@@ -8,7 +8,7 @@ const Footer = () =>
         @danishmughal
       </a>{' '}
       and{' '}
-      <a style={styles.linkStyle} href="https://github.com/KaranPhadnisNaik/miniRL">
+      <a style={styles.linkStyle} href="https://github.com/KaranPhadnisNaik">
         @karanphadnisnaik
       </a>.
     </div>

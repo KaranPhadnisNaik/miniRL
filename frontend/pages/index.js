@@ -11,7 +11,6 @@ export default () =>
       <title>miniRL</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js" />
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -29,6 +28,7 @@ export default () =>
           height: 100%;
         }
 
+        html,
         body {
           background: #2b5876; /* fallback for old browsers */
           background: -webkit-linear-gradient(

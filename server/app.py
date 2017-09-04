@@ -23,10 +23,10 @@ def create_tables():
 jwt = JWT(app, authenticate,identity) # creates a new endpoint /auth,
                                       # sends username and password to authnetiate function
 
-api.add_resource(InterpretHash, '/store/<string:hash>') # localhost:9000/Item/Rolf
-api.add_resource(Links, '/link') # localhost:9000/Item/Rolf
-api.add_resource(LinksList, '/all') # localhost:9000/Item/Rolf
-api.add_resource(StoreList, '/stores') # localhost:9000/Item/Rolf
+api.add_resource(InterpretHash, '/hash/<string:hash>') # localhost:9000/hash/h4xD
+api.add_resource(Links, '/link') # localhost:9000/link
+api.add_resource(LinksList, '/all') # localhost:9000/all
+api.add_resource(StoreList, '/stores') # localhost:9000/stores
 
 api.add_resource(UserRegister, '/register') # localhost:9000/register
 

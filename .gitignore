@@ -66,6 +66,3 @@ target/
 frontend/node_modules
 frontend/.next
 package-lock.json
-
-# Database files
-*.db

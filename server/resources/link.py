@@ -18,10 +18,14 @@ class Links(Resource):
         # else
         #    add add a new hash and store it
         data = Links.parser.parse_args()
+        # if we are inserting first URL, set the starting key
+
         row = LinksModel.find_by_url(data['url'])
         if row:
             return {'message': 'An item with the URL {} already exists!'.format(data['url']), 'hash':row.hash},400
         link = LinksModel(data['url'],0,'')
+        if not LinksModel.occupied():
+            link.id = 423122
         try:
             link.save_to_db()
         except:

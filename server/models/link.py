@@ -29,6 +29,10 @@ class LinksModel(db.Model):
     def find_by_hash(cls, hash):
         return cls.query.filter_by(hash=hash).first()
 
+    @classmethod
+    def occupied(cls):
+        return cls.query.first()
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()

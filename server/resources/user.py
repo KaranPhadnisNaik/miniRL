@@ -2,7 +2,16 @@ import sqlite3
 from flask_restful import Resource, reqparse
 from models.user import UserModel
 
+
 class UserRegister(Resource):
+    """
+    UserRegister: Resource that enables for user registration
+    UserRegister.post() a username and password stored in users table
+
+    Required Arguments:
+    + username (str)
+    + password (str)
+    """
 
     parser = reqparse.RequestParser()
     parser.add_argument('username',

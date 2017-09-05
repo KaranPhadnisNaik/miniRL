@@ -5,6 +5,15 @@ from resources.hashing import ShortURL
 
 
 class Links(Resource):
+    """
+    Links: Resource that adds a new link to links table
+    UserRegister.post() - store url and return hash
+
+    Required Arguments:
+    + HEADER: none
+    + url (str)
+    """
+
     parser = reqparse.RequestParser()
     parser.add_argument('url',
         type=str,
@@ -13,13 +22,8 @@ class Links(Resource):
     )
 
     def post(self):
-        # if the url that is sent via POST EXISTS
-        #    get the hash and return it
-        # else
-        #    add add a new hash and store it
         data = Links.parser.parse_args()
         # if we are inserting first URL, set the starting key
-
         row = LinksModel.find_by_url(data['url'])
         if row:
             return {'message': 'An item with the URL {} already exists!'.format(data['url']), 'hash':row.hash},400
@@ -39,16 +43,35 @@ class Links(Resource):
             row.save_to_db()
         except:
             return {'message': 'An error occured inserting the hash.'}, 500
+
         return row.json(), 201
 
+
 class InterpretHash(Resource):
+    """
+    InterpretHash: Resource that returns the url corresponding to a hash
+    InterpretHash.get() - get url corresponding to the hash and update clicks
+
+    Required Arguments:
+    + HEADER: <str:hash>
+    """
+
     def get(self,hash):
         row = LinksModel.find_by_hash(hash)
         if row:
             return row.json(), 200
+
         return {'message': 'That hash was not found.'},404
 
 
 class LinksList(Resource):
+    """
+    LinksList: Resource to return all fields of all urls (mostly for debugging)
+    LinksList.get() - get all urls and attributes
+
+    Required Arguments:
+    + HEADER: None
+    """
+
     def get(self):
         return {'links': list(map(lambda x: x.json(), LinksModel.query.all()))}

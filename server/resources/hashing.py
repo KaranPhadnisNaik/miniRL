@@ -5,7 +5,7 @@ class ShortURL(object):
 	ShortURL.decode() takes a short string and turns it into an ID
 	Features:
 	+ large alphabet (51 chars) and thus very short resulting strings
-	+ proof against offensive words (removed 'a', 'e', 'i', 'o' and 'u')
+	+ sterilze offensive words (removed vowels)
 	+ unambiguous (removed 'I', 'l', '1', 'O' and '0')
 	Example output:
 	123456789 <=> pgK8p

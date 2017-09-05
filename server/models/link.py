@@ -2,6 +2,18 @@ import sqlite3
 from db import db
 
 class LinksModel(db.Model):
+    """
+    LinksModel: SQLAlchemy Model for links table
+
+    CREATE TABLE links (
+        id INTEGER NOT NULL,
+        url VARCHAR(200),
+        hash VARCHAR(10),
+        hits INTEGER,
+        PRIMARY KEY (id)
+    )
+    """
+
     __tablename__ = 'links'
 
     id = db.Column(db.Integer, primary_key=True)

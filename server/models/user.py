@@ -2,6 +2,17 @@ import sqlite3
 from db import db
 
 class UserModel(db.Model):
+    """
+    UserModel: SQLAlchemy Model for users table
+
+    CREATE TABLE users (
+        id INTEGER NOT NULL,
+        username VARCHAR(80),
+        password VARCHAR(80),
+        PRIMARY KEY (id)
+    )
+    """
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)

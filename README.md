@@ -8,18 +8,19 @@ URL shortener
 
 ```
 $ pip install virtualenv
-$ virtualenv venv
+$ virtualenv venv --python=python3.5
 $ source venv/bin/activate
 ```
 
 2. Install required packages
 
 ```
-$ pip install -r requirements.txt
+$ pip install -r server/requirements.txt
 ```
 
 3. Running API locally
 
 ```
-$ python api.py
+$ cd server
+$ python app.py
 ```

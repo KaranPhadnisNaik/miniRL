@@ -28,11 +28,11 @@ class InputBox extends Component {
     let miniRl = '';
 
     axios
-      .post('http://127.0.0.1:9000/link', {
+      .post('http://localhost:9000/link', {
         url,
       })
       .then((response) => {
-        miniRl = `http://127.0.0.1:9000/hash/${response.data.hash}`;
+        miniRl = `http://localhost:9000/${response.data.hash}`;
       })
       .catch((error) => {
         console.log(error);

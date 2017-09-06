@@ -17,6 +17,7 @@ class LinksModel(db.Model):
     __tablename__ = 'links'
 
     id = db.Column(db.Integer, primary_key=True)
+    hash_id = db.Column(db.Integer)
     url = db.Column(db.String(200))
     hash = db.Column(db.String(10))
     hits = db.Column(db.Integer)
@@ -31,7 +32,7 @@ class LinksModel(db.Model):
         self.hash = hash
 
     def json(self):
-        return {'url': self.url, 'hash': self.hash, 'hits': self.hits, 'id': self.id}
+        return {'url': self.url, 'hash': self.hash, 'hits': self.hits, 'id': self.id, 'hash_id':self.hash_id}
 
     @classmethod
     def find_by_url(cls, url):
@@ -42,8 +43,8 @@ class LinksModel(db.Model):
         return cls.query.filter_by(hash=hash).first()
 
     @classmethod
-    def occupied(cls):
-        return cls.query.first()
+    def hash_id_exists(cls, hash_id):
+        return cls.query.filter_by(hash_id=hash_id).first()
 
     def save_to_db(self):
         db.session.add(self)

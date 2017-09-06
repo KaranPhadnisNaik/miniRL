@@ -1,3 +1,4 @@
+import random
 from flask_restful import Resource,reqparse
 #from flask_jwt import jwt_required
 from models.link import LinksModel
@@ -28,8 +29,11 @@ class Links(Resource):
         if row:
             return {'message': 'An item with the URL {} already exists!'.format(data['url']), 'hash':row.hash}, 200
         link = LinksModel(data['url'],0,'')
-        if not LinksModel.occupied():
-            link.id = 423122
+        # generate random hash_id
+        hash_id = random.randint(40313122,2047483647)
+        while LinksModel.hash_id_exists(hash_id):
+            hash_id = random.randint(40313122,2047483647)
+        link.hash_id = hash_id
         try:
             link.save_to_db()
         except:
@@ -38,7 +42,7 @@ class Links(Resource):
         row = LinksModel.find_by_url(data['url'])
         if not row:
             return {'message': 'There was an error retrieving the URL {} !'.format(data['url'])}, 400
-        row.hash = ShortURL().encode(row.id)
+        row.hash = ShortURL().encode(row.hash_id)
         try:
             row.save_to_db()
         except:
@@ -59,6 +63,11 @@ class InterpretHash(Resource):
     def get(self,hash):
         row = LinksModel.find_by_hash(hash)
         if row:
+            row.hits += 1
+            try:
+                row.save_to_db()
+            except:
+                return {'message': 'An error updating the hits count.'}, 500
             return row.json(), 200
 
         return {'message': 'That hash was not found.'},404

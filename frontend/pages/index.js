@@ -25,9 +25,11 @@ export default () =>
         body > div:first-of-type,
         #__next,
         #__next > div:first-of-type {
+          width: 100%;
           height: 100%;
         }
 
+        html,
         body {
           background: #2b5876; /* fallback for old browsers */
           background: -webkit-linear-gradient(

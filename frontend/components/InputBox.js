@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Button } from 'reactstrap';
 import { TransitionGroup } from 'react-transition-group';
+import axios from 'axios';
 
 import SearchBox from './SearchBox';
 import ResultCard from './ResultCard';
@@ -24,12 +25,23 @@ class InputBox extends Component {
     });
 
     // Handle API request here
-    const miniRl = 'http://bit.ly/1bdDlXc';
+    let miniRl = '';
+
+    axios
+      .post('http://127.0.0.1:9000/link', {
+        url,
+      })
+      .then((response) => {
+        miniRl = `http://127.0.0.1:9000/hash/${response.data.hash}`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     setTimeout(() => {
       this.setState({
         loading: false,
-        title: 'Google',
+        title: 'Title goes here',
         miniRl,
         url,
       });

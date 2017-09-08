@@ -8,6 +8,7 @@ class LinksModel(db.Model):
     CREATE TABLE links (
         id INTEGER NOT NULL,
         url VARCHAR(200),
+        hash_id INTEGER NOT NULL,
         hash VARCHAR(10),
         hits INTEGER,
         PRIMARY KEY (id)
@@ -32,7 +33,7 @@ class LinksModel(db.Model):
         self.hash = hash
 
     def json(self):
-        return {'url': self.url, 'hash': self.hash, 'hits': self.hits, 'id': self.id, 'hash_id':self.hash_id}
+        return {'url': self.url, 'hash': self.hash, 'hits': self.hits, 'id': self.id, 'hash_id': self.hash_id }
 
     @classmethod
     def find_by_url(cls, url):

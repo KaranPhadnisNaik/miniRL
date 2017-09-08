@@ -1,5 +1,20 @@
 # miniRL
-URL shortener
+URL shortening service built with N-bit encoding.
+
+## Running JS
+
+1. Install Node Versioning Module
+```
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
+```
+
+2. Running
+```
+$ cd frontend
+$ nvm install
+$ npm install
+$ npm dev run
+```
 
 
 ## Starting server

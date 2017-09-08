@@ -3,16 +3,18 @@ URL shortening service built with N-bit encoding.
 
 ## Running JS
 
-1. Install Node Versioning Module
+1. Install nvm and npm
+
 ```
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
-```
-
-2. Running
-```
 $ cd frontend
 $ nvm install
 $ npm install
+```
+
+2. Running
+
+```
 $ npm dev run
 ```
 

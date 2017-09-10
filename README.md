@@ -32,7 +32,7 @@ $ source venv/bin/activate
 2. Install required packages
 
 ```
-$ pip install -r server/requirements.txt
+$ pip install -r requirements.txt
 ```
 
 3. Running API locally

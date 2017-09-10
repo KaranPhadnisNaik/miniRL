@@ -4,6 +4,8 @@ from flask_restful import Resource,reqparse
 from models.link import LinksModel
 from resources.hashing import ShortURL
 
+from flask import redirect
+
 
 class Links(Resource):
     """
@@ -68,7 +70,8 @@ class InterpretHash(Resource):
                 row.save_to_db()
             except:
                 return {'message': 'An error updating the hits count.'}, 500
-            return row.json(), 200
+            #return row.json(), 200
+            return redirect(row.url, 302)
 
         return {'message': 'That hash was not found.'},404
 

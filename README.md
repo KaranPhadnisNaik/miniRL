@@ -1,8 +1,7 @@
 # miniRL
-URL shortening service built with N-bit encoding.
+URL shortening service built with N-base encoding.
 
 ## Running JS
-
 1. Install nvm and npm
 
 ```
@@ -11,6 +10,7 @@ $ cd frontend
 $ nvm install
 $ npm install
 ```
+
 
 2. Running
 
